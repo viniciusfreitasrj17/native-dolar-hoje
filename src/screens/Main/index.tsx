@@ -1,13 +1,20 @@
 import React, { FC } from "react";
-import { Text, View } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
+
+import CurrentDolar from "../../components/CurrentDolar";
+import Separator from "../../components/Separator";
+import Converter from "../../components/Converter";
 
 import styles from "./styles";
 
 const Main: FC = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Hellooo World !!!</Text>
+      <CurrentDolar />
+
+      <Separator />
+
+      <Converter />
     </SafeAreaView>
   );
 };
