@@ -21,7 +21,6 @@ const CurrentDolar: FC<Props> = ({ getDataApi }) => {
       if (data) {
         setTimeout(() => {
           setSpinnerIsVisible(false);
-          // console.log(data);
           convert(data);
         }, 1000);
       }
@@ -33,7 +32,6 @@ const CurrentDolar: FC<Props> = ({ getDataApi }) => {
   }
 
   function convert(arg: number) {
-    // console.log(arg);
     const dolarString = arg.toFixed(2).toString(); // to string with 2 fix
     const dolarWithoutComma = dolarString.split(".").join(","); // convert . to ,
     setText(`R$ ${dolarWithoutComma}`); // add dolar string to text

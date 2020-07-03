@@ -21,7 +21,6 @@ const Converter: FC<Props> = ({ getDataApi }) => {
       const data = await getDataApi();
 
       const convert = (real * data).toFixed(2).split(".").join(",").toString();
-      // console.log(convert);
       setResultado(`R$ ${convert.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}`);
     } else {
       const color = { borderColor: "#F00" };
