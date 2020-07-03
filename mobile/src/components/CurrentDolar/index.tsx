@@ -1,34 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Spinner from "react-native-loading-spinner-overlay";
 
-import api from "../../services/api";
 import style from "./style";
 
-const CurrentDolar = () => {
-  const [dolar, setDolar] = useState(0 as number);
+interface State {
+  getDataApi(): any;
+}
+
+type Props = State;
+
+const CurrentDolar: FC<Props> = ({ getDataApi }) => {
   const [text, setText] = useState("");
   const [spinnerIsVisible, setSpinnerIsVisible] = useState(false);
 
   async function loadDolar() {
     setSpinnerIsVisible(true);
     try {
-      const { data } = await api.get("/");
+      const data = await getDataApi();
       if (data) {
         setTimeout(() => {
           setSpinnerIsVisible(false);
-          setDolar(data);
+          // console.log(data);
           convert(data);
         }, 1000);
       }
     } catch (err) {
       setSpinnerIsVisible(false);
       setText("Houve um erro na API, tente depois..");
-      console.log({ error: err.message });
+      console.log(`Error: ${err.message}`);
     }
   }
 
   function convert(arg: number) {
+    // console.log(arg);
     const dolarString = arg.toFixed(2).toString(); // to string with 2 fix
     const dolarWithoutComma = dolarString.split(".").join(","); // convert . to ,
     setText(`R$ ${dolarWithoutComma}`); // add dolar string to text

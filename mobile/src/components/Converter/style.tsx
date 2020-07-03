@@ -26,6 +26,11 @@ const style = StyleSheet.create({
     alignItems: "center",
     marginVertical: 10,
   },
+  convert: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
 });
 
 export default style;
