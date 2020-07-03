@@ -12,29 +12,31 @@ const CurrentDolar = () => {
 
   async function loadDolar() {
     setSpinnerIsVisible(true);
-    const { data } = await api.get("/");
-
-    if (data) {
-      setTimeout(() => {
-        setSpinnerIsVisible(false);
-        setDolar(data);
-      }, 1000);
+    try {
+      const { data } = await api.get("/");
+      if (data) {
+        setTimeout(() => {
+          setSpinnerIsVisible(false);
+          setDolar(data);
+          convert(data);
+        }, 1000);
+      }
+    } catch (err) {
+      setSpinnerIsVisible(false);
+      setText("Houve um erro na API, tente depois..");
+      console.log({ error: err.message });
     }
   }
 
-  function convert() {
-    const dolarString = dolar.toFixed(2).toString(); // to string with 2 fix
+  function convert(arg: number) {
+    const dolarString = arg.toFixed(2).toString(); // to string with 2 fix
     const dolarWithoutComma = dolarString.split(".").join(","); // convert . to ,
-    setText(dolarWithoutComma); // add dolar string to text
+    setText(`R$ ${dolarWithoutComma}`); // add dolar string to text
   }
 
   useEffect(() => {
     loadDolar();
   }, []);
-
-  useEffect(() => {
-    convert();
-  }, [dolar]);
 
   return (
     <View style={style.container}>
@@ -47,7 +49,7 @@ const CurrentDolar = () => {
 
       <Text>Dolar Atualmente</Text>
 
-      <Text style={style.dolar}>{`R$ ${text}`}</Text>
+      <Text style={style.dolar}> {text} </Text>
 
       <TouchableOpacity style={style.button} onPress={loadDolar}>
         <Text>Atualizar</Text>
