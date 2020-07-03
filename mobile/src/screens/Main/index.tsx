@@ -10,7 +10,6 @@ import styles from "./styles";
 const Main: FC = () => {
   const getDataApi = async () => {
     const { data } = await api.get("/");
-    console.log(data);
     return data;
   };
 
