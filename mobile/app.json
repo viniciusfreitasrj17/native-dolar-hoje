@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Dolar Hoje",
+    "name": "Dolar_Hoje",
     "slug": "dolar-hoje",
     "description": "For those who want to consult Dolar today and convert to Real",
     "platforms": ["ios", "android", "web"],
