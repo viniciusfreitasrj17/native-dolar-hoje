@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "DolarHoje",
+    "name": "Dolar Hoje",
     "slug": "dolar-hoje",
     "description": "For those who want to consult Dolar today and convert to Real",
     "platforms": ["ios", "android", "web"],
@@ -21,7 +21,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.vinicius.dolar-hoje",
+      "package": "com.vinicius.dolarHoje",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo-fundo-dist.png"
