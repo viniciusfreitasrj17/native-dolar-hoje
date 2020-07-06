@@ -18,16 +18,18 @@ const CurrentDolar: FC<Props> = ({ getDataApi }) => {
     setSpinnerIsVisible(true);
     try {
       const data = await getDataApi();
-      if (data) {
+      if (!isNaN(data)) {
         setTimeout(() => {
           setSpinnerIsVisible(false);
           convert(data);
         }, 1000);
+      } else {
+        throw Error;
       }
     } catch (err) {
       setSpinnerIsVisible(false);
       setText("Houve um erro na API, tente depois..");
-      console.log(`Error: ${err.message}`);
+      // console.log(`Error: ${err.message}`); // for Dev
     }
   }
 

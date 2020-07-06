@@ -19,8 +19,7 @@ setInterval(function () {
         const arrayWithoutComma = arrayWithComma[1].split(',').join('.') // remove comma for point
         craw = parseFloat(arrayWithoutComma) // converte string tofloat
         // craw = 6
-        // console.log(craw) // testing backend
-        console.log(craw)
+        // console.log(craw) // testing Dev
       }
     })
   })
